@@ -66,9 +66,15 @@ create table if not exists logradouro(
 
 create table if not exists cep(
 	cep varchar(20) primary key,
-    id_logradouro int not null,
 	numero_inicio int not null,
-    numero_fim int not null,
+    numero_fim int not null
+);
+
+create table if not exists inclui(
+	cep varchar(20) not null,
+    id_logradouro int not null,
+    primary key(cep, id_logradouro),
+    foreign key (cep) references cep(cep),
     foreign key (id_logradouro) references logradouro(id_logradouro)
 );
 
